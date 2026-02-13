@@ -1,0 +1,44 @@
+platform :ios, '15.0'
+
+target 'FoodTruck' do
+  # React Native
+  pod 'React', :path => '../../FlyDubai/node_modules/react-native'
+  pod 'React-Core', :path => '../../FlyDubai/node_modules/react-native/React'
+  pod 'React-RCTNetwork', :path => '../../FlyDubai/node_modules/react-native/Libraries/Network'
+  pod 'React-RCTBlob', :path => '../../FlyDubai/node_modules/react-native/Libraries/Blob'
+  pod 'React-RCTImage', :path => '../../FlyDubai/node_modules/react-native/Libraries/Image'
+  pod 'React-RCTLinking', :path => '../../FlyDubai/node_modules/react-native/Libraries/Linking'
+  pod 'React-RCTSettings', :path => '../../FlyDubai/node_modules/react-native/Libraries/Settings'
+  pod 'React-RCTAnimation', :path => '../../FlyDubai/node_modules/react-native/Libraries/NativeAnimation'
+  pod 'React-RCTVibration', :path => '../../FlyDubai/node_modules/react-native/Libraries/Vibration'
+  pod 'React-Core/DevSupport', :path => '../../FlyDubai/node_modules/react-native'
+  pod 'React-RCTWebSocket', :path => '../../FlyDubai/node_modules/react-native/Libraries/WebSocket'
+
+  # React Navigation
+  pod 'react-native-screens', :path => '../../FlyDubai/node_modules/react-native-screens'
+  pod 'react-native-gesture-handler', :path => '../../FlyDubai/node_modules/react-native-gesture-handler'
+  pod 'react-native-reanimated', :path => '../../FlyDubai/node_modules/react-native-reanimated'
+  pod 'react-native-safe-area-context', :path => '../../FlyDubai/node_modules/react-native-safe-area-context'
+
+  # Dependencies
+  pod 'Flipper', '~> 0.206.0', :configuration => 'Debug'
+  pod 'Flipper-DoubleConversion', :configuration => 'Debug'
+  pod 'Flipper-Folly', :configuration => 'Debug'
+  pod 'Flipper-Glog', :configuration => 'Debug'
+  pod 'Flipper-PeerTalk', :configuration => 'Debug'
+  pod 'Flipper-RSocket', :configuration => 'Debug'
+  pod 'FlipperKit', '~> 0.206.0', :configuration => 'Debug'
+  pod 'FlipperKit/FlipperKitCorePlugin', '~> 0.206.0', :configuration => 'Debug'
+  pod 'FlipperKit/SKIOSNetworkPlugin', '~> 0.206.0', :configuration => 'Debug'
+  pod 'FlipperKit/SKIOSNetworkPlugin/Core', '~> 0.206.0', :configuration => 'Debug'
+  pod 'FlipperKit/FBCxxFollyDynamicConvert', '~> 0.206.0', :configuration => 'Debug'
+  pod 'FlipperKit/FBDefines', '~> 0.206.0', :configuration => 'Debug'
+  pod 'FlipperKit/FBReactNativeSpec', '~> 0.206.0', :configuration => 'Debug'
+
+  post_install do |installer|
+    react_native_post_install(installer)
+    installer.pods_project.targets.each do |target|
+      flutter_additional_ios_build_settings(target)
+    end
+  end
+end
